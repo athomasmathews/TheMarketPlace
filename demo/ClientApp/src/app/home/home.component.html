@@ -1,0 +1,47 @@
+<app-nav-menu></app-nav-menu>
+<div class="container">
+  <div class="row">
+    
+  </div>
+  <div class="row">
+    <h4>Saving You More at The Market Place, with over 220 stores across Canada. Shop now for great deals on furniture, mattresses, appliances, TVs and electronics.</h4>
+    <div style="height:50px">
+    </div>
+    <div style="padding-left:25px">
+      <label style="width:70px">Sort By:</label>
+      <select name="SortByPrice" (change)="sortTable()">
+        <option value="0">Price low to high</option>
+        <option value="1">Price high to low</option>
+      </select>
+    </div>
+    <table style="width:100%">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Item Description</th>
+          <!--<th style="text-align:center" >Price <span>(<a href="#" (click)="sortTable()">Sort</a>)</span></th>-->
+          <th style="text-align:center">Price</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of this.items | sortBy : ['price', 'ASC|DESC'] ">
+          <td style="width:20%"><img [src]="item.path" title="SOFA" style="width:200px;border-radius:50%;padding:20px" /></td>
+          <td style="width:60%">{{item.description}}</td>
+          <td style="width:20%;text-align:center">{{item.price|currency:'CAD'}}</td>
+          <td><input type="checkbox" [(ngModel)]="item.checked" id="{{item.id}}" /></td>
+        </tr>
+        <tr>
+          <td colspan="4" style="text-align:center">
+            <button type="button" (click)="myfun()" class="bg-dark" style="width:250px;height:50px;border-radius:5px;color:white;font-size:medium;font-weight:bold">BUY</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+  
+</div>
+  
+
+
